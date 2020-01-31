@@ -13,6 +13,7 @@ module.exports = {
     'no-restricted-globals': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'warn',
-    'no-unused-vars': 'warn'
+    'no-unused-vars': 'warn',
+    'func-names': 'off'
   }
 }

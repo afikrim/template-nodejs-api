@@ -8,7 +8,11 @@
     "dev": "npx pm2-runtime start .pm2rc.config.js --only api-dev",
     "prod": "npx pm2 start .pm2rc.config.js --only api-start",
     "lints": "npx eslint ./**/**.js",
-    "lints:format": "npx eslint ./**/**.js --fix"
+    "lints:format": "npx eslint ./**/**.js --fix",
+    "migrate": "npx sequelize-cli db:migrate",
+    "migrate:rollback": "npx sequelize-cli db:migrate:undo",
+    "seed": "npx sequelize-cli db:seed",
+    "seed:rollback": "npx sequelize-cli db:seed:undo"
   },
   "repository": {
     "type": "git",
@@ -28,7 +32,8 @@
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-prettier": "^3.1.2",
     "pm2": "^4.2.3",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "sequelize-cli": "^5.5.1"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
