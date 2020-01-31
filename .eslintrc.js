@@ -11,6 +11,8 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-shadow': 'off',
     'no-restricted-globals': 'off',
-    'import/no-unresolved': 'off'
+    'import/no-unresolved': 'off',
+    'import/no-extraneous-dependencies': 'warn',
+    'no-unused-vars': 'warn'
   }
 }

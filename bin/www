@@ -1,0 +1,64 @@
+const app = require('../app')
+const http = require('http')
+
+// Define port to run server
+const port = normalizePort(process.env.PORT || 3000)
+
+// Set port to application
+app.set('port', port)
+
+// Create http server instance
+const server = http.createServer(app)
+
+// Start http server in provided port
+server.listen(port)
+// Set event listener
+server.on('listening', onListening)
+server.on('error', onError)
+
+// Normalize a port to a string, integer, or false
+function normalizePort(val) {
+  const port = parseInt(val, 10)
+
+  if (isNaN(port)) {
+    // Named pipe
+    return val
+  }
+
+  if (port >= 0) {
+    // Port number
+    return port
+  }
+
+  return false
+}
+
+// Event listener for http server "listening"
+function onListening() {
+  const addr = server.address()
+  const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`
+  console.log(`Listening on ${bind}`)
+}
+
+// Event listener for http server "error"
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error
+  }
+
+  const bind = typeof port === 'string' ? `Pipe ${port}` : `Port ${port}`
+
+  // Handle specific error
+  switch (error.code) {
+    case 'EACCES':
+      console.error(`${bind} requires elevated privileges`)
+      process.exit(1)
+      break
+    case 'EADDRINUSE':
+      console.error(`${bind} is already in use`)
+      process.exit(1)
+      break
+    default:
+      throw error
+  }
+}

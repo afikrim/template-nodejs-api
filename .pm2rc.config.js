@@ -1,19 +1,22 @@
 module.exports = {
   apps: [
     {
-      name: 'API',
+      name: 'api-prod',
+      script: './scripts/start.js',
+
+      instances: 1,
+      autorestart: true,
+      watch: true,
+      max_memory_restart: '1G'
+    },
+    {
+      name: 'api-dev',
       script: './scripts/build.js',
 
       instances: 1,
       autorestart: true,
       watch: true,
-      max_memory_restart: '1G',
-      env: {
-        NODE_ENV: 'development'
-      },
-      env_production: {
-        NODE_ENV: 'production'
-      }
+      max_memory_restart: '1G'
     }
   ]
 }

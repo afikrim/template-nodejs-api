@@ -4,9 +4,9 @@
   "description": "Template for nodejs api project",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node ./bin/postinstall",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx pm2-runtime start .pm2rc.js",
+    "dev": "npx pm2-runtime start .pm2rc.config.js --only api-dev",
+    "prod": "npx pm2 start .pm2rc.config.js --only api-start",
     "lints": "npx eslint ./**/**.js",
     "lints:format": "npx eslint ./**/**.js --fix"
   },
@@ -23,11 +23,21 @@
   "homepage": "https://github.com/afikrim/template-nodejs-api#readme",
   "devDependencies": {
     "eslint": "^6.8.0",
-    "prettier": "^1.19.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-prettier": "^3.1.2",
-    "pm2": "^4.2.3"
+    "pm2": "^4.2.3",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "pg": "^7.18.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.3"
   }
 }
